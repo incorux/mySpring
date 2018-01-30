@@ -2,6 +2,7 @@ package contact.classes.services;
 
 import contact.classes.entities.Contact;
 
+// Alternatywnie do Beans.java: @Service
 public class ContactService {
     private ContactRepository contactRepository;
 

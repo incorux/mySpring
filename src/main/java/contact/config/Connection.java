@@ -22,7 +22,6 @@ import java.util.Properties;
 
 @EnableJpaRepositories(basePackages = "contact.classes.services")
 @EnableTransactionManagement
-@PropertySource("classpath:jdbc.properties")
 @Configuration
 public class Connection {
 
@@ -32,17 +31,19 @@ public class Connection {
     @Bean
     public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(environment.getProperty("database.username"));
-        dataSource.setPassword(environment.getProperty("database.password"));
-        dataSource.setJdbcUrl(environment.getProperty("database.url"));
-        dataSource.setDriverClass(environment.getProperty("database.driver"));
+        dataSource.setUser("root");
+        dataSource.setPassword("admin");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/bank");
+        dataSource.setDriverClass("com.mysql.jdbc.Driver");
         return dataSource;
     }
 
     @Bean
     public PropertiesFactoryBean jpaProperties() {
         PropertiesFactoryBean factoryBean =  new PropertiesFactoryBean();
-        factoryBean.setLocation(new ClassPathResource("jpa.properties"));
+        Properties properties = new Properties();
+        properties.put("javax.persistence.schema-generation.database.action", "none");
+        factoryBean.setProperties(properties);
         return factoryBean;
     }
 
