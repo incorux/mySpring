@@ -21,6 +21,6 @@ public class ContactService {
     }
 
     public void deleteContactById(long id){
-        contactRepository.deleteById(id);
+        contactRepository.delete(id);
     }
 }

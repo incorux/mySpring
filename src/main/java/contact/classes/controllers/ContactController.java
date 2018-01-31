@@ -41,7 +41,7 @@ public class ContactController {
         return created(uri).build();
     }
 
-    @RequestMapping(value = "deleteaccount/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deletecontact/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteAccount(@PathVariable("id") Long id) {
         contactService.deleteContactById(id);
         return noContent().build();
