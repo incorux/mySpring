@@ -19,4 +19,8 @@ public class ContactService {
     public void updateContact(Contact contact){
         contactRepository.saveAndFlush(contact);
     }
+
+    public void deleteContactById(long id){
+        contactRepository.deleteById(id);
+    }
 }

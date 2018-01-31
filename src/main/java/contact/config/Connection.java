@@ -42,7 +42,7 @@ public class Connection {
     public PropertiesFactoryBean jpaProperties() {
         PropertiesFactoryBean factoryBean =  new PropertiesFactoryBean();
         Properties properties = new Properties();
-        properties.put("javax.persistence.schema-generation.database.action", "none");
+        properties.put("javax.persistence.schema-generation.database.action", "drop-and-create");
         factoryBean.setProperties(properties);
         return factoryBean;
     }
